@@ -1,0 +1,23 @@
+{
+  "name": "react-quicktable",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "highlight.js": "^9.10.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "chokidar": "^1.6.1",
+    "npm-run-all": "^4.0.2",
+    "prop-types": "^15.6.1",
+    "react-docgen": "^2.14.0"
+  }
+}
