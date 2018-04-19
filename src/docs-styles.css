@@ -1,0 +1,32 @@
+/* Docs specific styles */
+p b {
+  padding: 1px 3px;
+  background-color: #eef4f7;
+  font-family: Courier New, Courier, monospace;
+}
+
+pre {
+  color: #555555;
+  background-color: #eef4f7;
+  font-weight: bold;
+  border-radius: 0px;
+}
+
+.h3_style {
+  margin-top: 40px;
+  padding: 10px 5px;
+  background-color: #dde8ee;
+}
+
+.h4_style {
+  padding: 10px 5px;
+  background-color: #eef4f7;
+}
+
+.content_style {
+  padding: 10px;
+}
+
+.docs-div {
+  padding: 20px 40px;
+}
