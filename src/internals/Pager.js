@@ -31,17 +31,20 @@ class Pager extends Component {
       <div style={pagerStyle}>
         <div>
           <PagerNavButton
+            title="Previous page"
             text="«"
             onClick={handlePrevPage}
             disabled={!page || page <= 1}
           />
           <PagerNavSelect
+            title="Page"
             onChange={handleSetPage}
             options={calcPageNumbers(totalPages)}
             value={page}
             disabled={!page || !totalPages || totalPages <= 1}
           />
           <PagerNavButton
+            title="Next page"
             text="»"
             onClick={handleNextPage}
             disabled={!totalPages || page >= totalPages}
@@ -50,6 +53,7 @@ class Pager extends Component {
 
         <div style={pagerPerPage}>
           <PagerNavSelect
+            title="Per page limit"
             onChange={handleSetPageLimit}
             options={pageLimits}
             value={perPage}

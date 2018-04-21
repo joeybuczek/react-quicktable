@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 // Local vars
@@ -15,31 +15,36 @@ const pagerNavButtonDisabledStyle = {
   color: "#AAA"
 };
 
-class PagerNavButton extends Component {
-  render() {
-    let { text, onClick, className, style, disabled } = this.props;
-    return (
-      <button
-        style={{
-          ...(style || pagerNavButtonStyle),
-          ...(disabled ? pagerNavButtonDisabledStyle : {})
-        }}
-        className={className}
-        disabled={disabled}
-        onClick={!disabled ? onClick : null}
-      >
-        {text}
-      </button>
-    );
-  }
-}
+const PagerNavButton = ({ 
+  text, 
+  onClick, 
+  className, 
+  style, 
+  disabled,
+  title
+}) => (
+  <button
+    aria-label={title}
+    title={title}
+    style={{
+      ...(style || pagerNavButtonStyle),
+      ...(disabled ? pagerNavButtonDisabledStyle : {})
+    }}
+    className={className}
+    disabled={disabled}
+    onClick={!disabled ? onClick : null}
+  >
+    {text}
+  </button>
+);
 
 PagerNavButton.propTypes = {
   text: PropTypes.any,
   onClick: PropTypes.any,
   style: PropTypes.object,
   className: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  title: PropTypes.string
 };
 
 export default PagerNavButton;

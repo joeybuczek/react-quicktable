@@ -137,8 +137,11 @@ const QuickTableDocs = props => {
           styled, such as the sort icons, toggle icons, and the various action
           buttons. Please visit the link below to see a live example of how to use
           all props relating to styles for the QuickTable elements:{" "}
-          <a>codesandbox link</a>
         </p>
+        <a href="https://codesandbox.io/s/1lm8p8pl" target="_blank" rel="noopener noreferrer">
+          <img alt="QuickTable Styling Demo on Codesandbox" src="https://codesandbox.io/static/img/play-codesandbox.svg" />
+        </a>
+        <br />
         <br />
         <h4 className="h4_style">Pagination</h4>
         <p>

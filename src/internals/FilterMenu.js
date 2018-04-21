@@ -75,6 +75,7 @@ class FilterMenu extends Component {
       >
         <div>
           <select
+            aria-label="Select filter method"
             name="method"
             style={controlStyle}
             value={selectValue}
@@ -85,6 +86,7 @@ class FilterMenu extends Component {
         </div>
         <div>
           <input
+            aria-label="Value to match"
             name="arg"
             value={inputValue}
             style={{ ...controlStyle, paddingLeft: 4 }}

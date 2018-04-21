@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 /** 
@@ -7,13 +7,12 @@ import PropTypes from "prop-types";
  * passed as first argument, recordApi as second. 
  * (record, recordApi) => { ... } 
  * */
-class ToggleContent extends Component {
-  render() {
-    return <div />;
-  }
-}
+const ToggleContent = props => <div />;
 
-/** Note: All prop/render logic is handled in DataTable */
+/** 
+ * Note: All prop/render logic is handled in QuickTable 
+ * This component is for simplicity of configuration
+ * */
 
 ToggleContent.propTypes = {
   /** Determines if row is able to be toggled, must return a boolean: (record) => { ... } */

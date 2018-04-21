@@ -104,9 +104,11 @@ const ToggleContentDocs = props => {
           a table with a column of "Talents" displayed.
         </p>
         <p>
-          For a live demo of an advanced use case, click here:{" "}
-          <a>codesandbox link</a>
+          For a live demo of an advanced use case with ToggleContent, click below:{" "}
         </p>
+        <a href="https://codesandbox.io/s/lpy3nw6xl7" target="_blank" rel="noopener noreferrer">
+          <img alt="QuickTable & ToggleContent Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg" />
+        </a>
       </div>
     </div>
   );

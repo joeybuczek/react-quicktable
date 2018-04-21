@@ -413,14 +413,24 @@ class QuickTable extends Component {
       firstRecord: page * perPage - perPage
     });
   };
-  recalcPagingOptions = () => {
+
+  // ==========================================================
+  //                   RECALCULATION METHODS
+  // ==========================================================
+  recalcPagingOptions = ({ __rowId__ }) => {
     let { displayedData } = this.state.datasets;
+    let { toggleOptions } = this.state;
+    if (!toggleOptions.multiToggle && toggleOptions.rowToggled === __rowId__) {
+      toggleOptions.rowToggled = -1;
+      toggleOptions.isToggled = false;
+    }
     if (displayedData.length <= 1) {
       return {
         pagingOptions: {
           page: 1,
           firstRecord: 0
-        }
+        },
+        toggleOptions
       };
     }
     return {};
@@ -436,7 +446,7 @@ class QuickTable extends Component {
         this.recordApiRequest(updateRecord, record); // [IMPORTED_METHOD]
       },
       removeRecord: record => {
-        let options = this.recalcPagingOptions();
+        let options = this.recalcPagingOptions(record);
         this.recordApiRequest(removeRecord, record, options); // [IMPORTED_METHOD]
       }
     };
@@ -836,7 +846,7 @@ class QuickTable extends Component {
     let body = this.renderTBody();
     return (
       <div
-        id={wrapperId || "quicktable-wrapper"}
+        id={wrapperId}
         className={wrapperClassName}
         style={wrapperStyle || {}}
       >
@@ -847,7 +857,7 @@ class QuickTable extends Component {
         </div>
         {pageable && !limitEnabled && pagerOnTop && this.getPager()}
         <table
-          id={id || "quicktable"}
+          id={id}
           className={className}
           style={style || {}}
         >
@@ -867,7 +877,7 @@ class QuickTable extends Component {
 }
 
 QuickTable.propTypes = {
-  /** Set to true when using versions of React prior to 16.3.1 */
+  /** Set to true when using versions of React prior to 16.3.0 */
   legacy: PropTypes.bool,
 
   /** Dataset to render, can be empty */

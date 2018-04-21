@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 /** 
@@ -8,13 +8,12 @@ import PropTypes from "prop-types";
  * argument, recordApi as second.
  * (record, recordApi) => { ... }
  * */
-class Column extends Component {
-  render() {
-    return <div />;
-  }
-}
+const Column = props => <div />;
 
-/** Note: All prop/render logic is handled in QuickTable */
+/** 
+ * Note: All prop/render logic is handled in QuickTable 
+ * This component is for simplicity of configuration
+ * */
 
 Column.propTypes = {
   /** The name of the column, maps to a data record's key to display corresponding value in row cell */

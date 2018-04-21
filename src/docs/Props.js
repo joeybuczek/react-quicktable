@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { QuickTable, Column } from 'react-quicktable';
 
-const Props = ({props}) => {
+const Props = ({props, name}) => {
   let dataset = Object.keys(props).map(key => {
     return { 
       Name: key, 
@@ -14,12 +14,15 @@ const Props = ({props}) => {
   })
   return (
     <div>
-      <QuickTable data={dataset} className="quicktable-cool">
-        <Column name="Name" />
-        <Column name="Type" />
-        <Column name="Required" />
-        <Column name="Description" />
-      </QuickTable>
+      <h3 className="h3_style">{name} Props</h3>
+      <div className="content_style"> 
+        <QuickTable data={dataset} className="quicktable-cool">
+          <Column name="Name" />
+          <Column name="Type" />
+          <Column name="Required" />
+          <Column name="Description" />
+        </QuickTable>
+      </div>
     </div>
   )
 }

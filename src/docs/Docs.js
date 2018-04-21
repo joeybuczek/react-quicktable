@@ -1,57 +1,57 @@
 import React from 'react';
-import Navigation from './Navigation';
-import ComponentPage from './ComponentPage';
+import Props from "./Props";
 import componentData from '../../config/componentData';
+import TabContainer from "./TabContainer";
 import QuickTableDocs from "./QuickTableDocs";
 import ColumnDocs from "./ColumnDocs";
 import ToggleContentDocs from "./ToggleContentDocs";
 import RecordApiDocs from "./RecordApiDocs";
 import "../docs-styles.css";
 
-// Local styles
-const h3_style = {
-  marginTop: '40px',
-  padding: "10px 5px",
-  backgroundColor: "#dde8ee"
-};
-const content_style = {
-  padding: '10px'
-};
+const Docs = props => {
+  const { Tab } = TabContainer;
+  const quickTableComponent = componentData.filter(c => c.name === "QuickTable")[0];
+  const columnComponent = componentData.filter(c => c.name === "Column")[0];
+  const toggleContentComponent = componentData.filter(c => c.name === "ToggleContent")[0];
 
-export default class Docs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      route: window.location.hash.substr(1)
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener('hashchange', () => {
-      this.setState({route: window.location.hash.substr(1)})
-    })
-  }
-
-  render() {
-    const {route} = this.state;
-    const component = route ? componentData.filter( component => component.name === route)[0] : componentData[1];
-
-    return (
-      <div className="docs-div">
-        <QuickTableDocs />
-        <hr />
-        <ColumnDocs />
-        <hr />
-        <ToggleContentDocs />
-        <hr />
-        <RecordApiDocs />
-        <hr />
-        <h3 className="h3_style">All Component Props</h3>
-        <div className="content_style">
-          <Navigation components={componentData.map(component => component.name)} />
-          <ComponentPage component={component} />
-        </div>
+  return (
+    <div className="docs-div">
+      <h1>QuickTable Documentation</h1>
+      <div className="content_style">
+      <p>
+        QuickTable is made up of three components: QuickTable, Column, and ToggleContent. 
+        The first two are required for rendering, while ToggleContent is optional. Below 
+        you'll find the documentation for implementing each component, along with a section 
+        on the Record API interface (a quick way to manipulate table content). 
+      </p>
+      <p>
+        The QuickTable component uses features available in React 16.3.0 and higher. 
+        For use with prior versions, use the temporary <b>legacy</b> prop (see below 
+        in QuickTable props section). When using React 16.3.0 or higher, warnings in the 
+        developer console will display for 0.1.x versions of QuickTable in regards to 
+        the legacy lifecycle method used, however in the next major release legacy 
+        methods will be renamed to their "unsafe" names.
+      </p>
       </div>
-    )
-  }
+      <TabContainer>
+        <Tab name="QuickTable">
+          <QuickTableDocs />
+          <Props props={quickTableComponent.props} name="QuickTable" />
+        </Tab>
+        <Tab name="Column">
+          <ColumnDocs />
+          <Props props={columnComponent.props} name="Column" />
+        </Tab>
+        <Tab name="ToggleContent">
+          <ToggleContentDocs />
+          <Props props={toggleContentComponent.props} name="ToggleContent" />
+        </Tab>
+        <Tab name="Record API">
+          <RecordApiDocs />
+        </Tab>
+      </TabContainer>
+    </div>
+  );
 }
+
+export default Docs;

@@ -22,9 +22,11 @@ class PagerNavSelect extends Component {
   };
 
   render() {
-    let { onChange, className, style, options, disabled, value } = this.props;
+    let { onChange, className, style, options, disabled, value, title } = this.props;
     return (
       <select
+        aria-label={title}
+        title={title}
         className={className}
         style={{
           ...(style || pagerNavSelectStyle),
@@ -46,7 +48,8 @@ PagerNavSelect.propTypes = {
   className: PropTypes.string, 
   options: PropTypes.array, 
   disabled: PropTypes.bool, 
-  value: PropTypes.any
+  value: PropTypes.any,
+  title: PropTypes.string
 };
 
 export default PagerNavSelect;
