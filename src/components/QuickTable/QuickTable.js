@@ -10,7 +10,7 @@ import {
   SortIndicator,
   ToggleCell,
   ToggleRow
-} from "../../internals";
+} from "../internals";
 import ToggleContent from "../ToggleContent";
 import {
   copyObjectArray,
@@ -25,7 +25,7 @@ import {
   __rowId__,
   __toggled__,
   __none__
-} from "../../util";
+} from "../util";
 
 /**
  * A feature-enabled table component for quickly displaying 

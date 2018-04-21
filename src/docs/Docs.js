@@ -7,6 +7,7 @@ import ColumnDocs from "./ColumnDocs";
 import ToggleContentDocs from "./ToggleContentDocs";
 import RecordApiDocs from "./RecordApiDocs";
 import "../docs-styles.css";
+import { QuickTable, Column, ToggleContent } from "../components";
 
 const Docs = props => {
   const { Tab } = TabContainer;

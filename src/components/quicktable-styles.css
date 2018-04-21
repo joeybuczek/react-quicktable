@@ -1,0 +1,105 @@
+/* Base styles for QuickTable component */
+
+table[class*="quicktable"] {
+  width: 100%;
+}
+table[class*="quicktable"] thead tr th {
+  color: #4d4d4d;
+  padding: 5px;
+}
+table[class*="quicktable"] tbody tr td {
+  padding: 10px 5px;
+}
+table.quicktable tbody > tr {
+  border-top: 1px solid #d9d9d9;
+}
+.quicktable-actions {
+  margin: 0px;
+}
+.quicktable-actions button.quicktable-button {
+  margin: 0px 2px;
+  height: 30px;
+  border: 1px solid #aaaaaa;
+  outline: none;
+  background-color: #ffffff;
+}
+.quicktable-actions button.quicktable-button:hover {
+  background-color: #eeeeee;
+}
+
+/* Neutral (quicktable-neutral) */
+
+table.quicktable-neutral thead tr th {
+  color: #595959;
+}
+table.quicktable-neutral tbody tr {
+  border-top: 1px solid #e6e6e6;
+}
+table.quicktable-neutral tbody tr td.quicktable-toggle-cell span.quicktable-toggle-icon,
+table.quicktable-neutral thead tr th span.quicktable-sort-icon {
+  color: #676767;
+}
+.quicktable-actions.quicktable-neutral button.quicktable-button {
+  background-color: #f2f2f2;
+  color: #676767;
+}
+.quicktable-actions.quicktable-neutral button.quicktable-button:hover {
+  background-color: #e6e6e6;
+}
+
+/* Cool (quicktable-cool) */
+
+table.quicktable-cool thead tr th {
+  color: #3a6478;
+}
+table.quicktable-cool tbody tr td {
+  border-top: 1px solid #dde8ee;
+}
+table.quicktable-cool tbody tr td.quicktable-toggle-cell span.quicktable-toggle-icon,
+table.quicktable-cool thead tr th span.quicktable-sort-icon {
+  color: #3a6478;
+}
+.quicktable-actions.quicktable-cool button.quicktable-button {
+  background-color: #eef4f7;
+  color: #3a6478;
+}
+.quicktable-actions.quicktable-cool button.quicktable-button:hover {
+  background-color: #dde8ee;
+}
+
+/* Cool (quicktable-warm) */
+
+table.quicktable-warm thead tr th {
+  color: #78593a;
+}
+table.quicktable-warm tbody tr td {
+  border-top: 1px solid #eee6dd;
+}
+table.quicktable-warm tbody tr td.quicktable-toggle-cell span.quicktable-toggle-icon,
+table.quicktable-warm thead tr th span.quicktable-sort-icon {
+  color: #78593a;
+}
+.quicktable-actions.quicktable-warm button.quicktable-button {
+  background-color: #f7f2ee;
+  color: #78593a;
+}
+.quicktable-actions.quicktable-warm button.quicktable-button:hover {
+  background-color: #eee6dd;
+}
+
+/* Override styles for QuickTable component */
+
+table[class*="quicktable"] tbody tr td.quicktable-toggle-cell {
+  border-bottom: 1px solid transparent;
+}
+table[class*="quicktable"]
+  tbody
+  tr
+  td.quicktable-toggle-cell
+  span.quicktable-toggle-icon {
+  font-weight: bold;
+}
+table[class*="quicktable"] thead tr th 
+span.quicktable-sort-icon {
+  font-weight: bold;
+}

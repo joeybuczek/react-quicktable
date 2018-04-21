@@ -73,7 +73,9 @@ function getExampleFiles(examplesPath, componentName) {
 
 function getDirectories(filepath) {
   return fs.readdirSync(filepath).filter(function(file) {
-    return fs.statSync(path.join(filepath, file)).isDirectory();
+    return fs.statSync(path.join(filepath, file)).isDirectory() 
+      && path.join(filepath, file).indexOf('internals') < 0
+      && path.join(filepath, file).indexOf('util') < 0;
   });
 }
 
