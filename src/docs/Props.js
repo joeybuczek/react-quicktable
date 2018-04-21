@@ -16,8 +16,8 @@ const Props = ({props, name}) => {
     <div>
       <h3 className="h3_style">{name} Props</h3>
       <div className="content_style"> 
-        <QuickTable data={dataset} className="quicktable-cool">
-          <Column name="Name" />
+        <QuickTable data={dataset} sortable className="quicktable-cool">
+          <Column name="Name" sortable dataType="string" />
           <Column name="Type" />
           <Column name="Required" />
           <Column name="Description" />

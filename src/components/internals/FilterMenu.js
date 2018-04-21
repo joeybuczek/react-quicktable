@@ -45,15 +45,20 @@ class FilterMenu extends Component {
 
   getLeft = () => {
     let { columnCount, columnIndex } = this.props;
-    return columnIndex < Math.floor(columnCount / 2) ? 0 : -100;
+    return columnIndex < Math.floor(columnCount / 2) || columnIndex === 0
+      ? 0
+      : -100;
   };
 
   render() {
     let { selectValue, inputValue, hidden } = this.props;
     let controlStyle = {
       display: "block",
-      width: "100%",
+      width: 151,
       height: 24,
+      paddingLeft: 4,
+      marginTop: 1,
+      borderRadius: 0,
       fontSize: ".75em"
     };
     return (
@@ -69,15 +74,17 @@ class FilterMenu extends Component {
           top: 3,
           left: this.getLeft(),
           zIndex: 999,
-          width: 150,
+          width: 160,
           display: hidden ? "none" : ""
         }}
+        className="quicktable-filter-menu"
       >
         <div>
           <select
             aria-label="Select filter method"
             name="method"
-            style={controlStyle}
+            className="quicktable-filter-select"
+            style={{ ...controlStyle, width: "100%" }}
             value={selectValue}
             onChange={this.handleSelectChange}
           >
@@ -88,8 +95,9 @@ class FilterMenu extends Component {
           <input
             aria-label="Value to match"
             name="arg"
+            className="quicktable-filter-input"
             value={inputValue}
-            style={{ ...controlStyle, paddingLeft: 4 }}
+            style={controlStyle}
             placeholder="Value to match"
             onChange={this.handleInputChange}
           />

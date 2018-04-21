@@ -12,14 +12,6 @@ a, a:visited {
   clear: both;
 }
 
-td {
-  border-top: dotted 1px #d3d3d3;
-}
-
-td, th {
-  padding: 10px;
-}
-
 table {
   border-collapse:collapse;
 }
@@ -38,15 +30,6 @@ table {
 
 .example p:last-of-type {
    margin-bottom: 0;
-}
-
-.props tr td:last-of-type {
-  text-align: center;
-}
-
-.props th, td {
-  text-align: left;
-  padding: 20px 10px;
 }
 
 .navigation {
