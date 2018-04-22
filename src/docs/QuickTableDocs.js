@@ -97,9 +97,8 @@ const QuickTableDocs = props => {
         <p>
           The <b>QuickTable</b> component has custom classes built into it, and
           comes with some pre-made themes for quickly styling the table elements.
-          To use these, simply import the <b>"quicktable-styles.css"</b> file and
-          add one of the following classes to the <b>className</b> prop of the{" "}
-          <b>QuickTable</b> component:
+          To use these, simply assign one of the following classes to the{" "}  
+          <b>className</b> prop of the<b>QuickTable</b> component:
         </p>
         <pre>{qt_code_theme}</pre>
         <p>
@@ -136,7 +135,7 @@ const QuickTableDocs = props => {
           There are many elements within <b>QuickTable</b> that can also be
           styled, such as the sort icons, toggle icons, and the various action
           buttons. Please visit the link below to see a live example of how to use
-          all props relating to styles for the QuickTable elements:{" "}
+          these props to style the QuickTable elements:{" "}
         </p>
         <a href="https://codesandbox.io/s/1lm8p8pl" target="_blank" rel="noopener noreferrer">
           <img alt="QuickTable Styling Demo on Codesandbox" src="https://codesandbox.io/static/img/play-codesandbox.svg" />

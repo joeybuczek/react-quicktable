@@ -2,7 +2,9 @@ import React from "react";
 import "../docs-styles.css";
 
 // ToggleContent Docs
-const t_code_1 = `...
+const t_code_1 = `import { QuickTable, Column, ToggleContent } from "react-quicktable";
+
+...
   <QuickTable data={dataset}>
     <Column name="Name" />
     <Column name="Title" />
