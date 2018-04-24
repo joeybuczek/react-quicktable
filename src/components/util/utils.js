@@ -27,6 +27,12 @@ const sortMethods = {
     return direction === "asc"
       ? (a, b) => (new Date(a[field]) || 0) - (new Date(b[field]) || 0)
       : (a, b) => (new Date(b[field]) || 0) - (new Date(a[field]) || 0);
+  },
+  boolean: (field, direction) => {
+    const boolToNum = field => !!field ? 1 : 0;
+    return direction === "asc"
+      ? (a, b) => (boolToNum(a[field]) || 0) - (boolToNum(b[field]) || 0)
+      : (a, b) => (boolToNum(b[field]) || 0) - (boolToNum(a[field]) || 0);
   }
 };
 

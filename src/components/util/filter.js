@@ -138,6 +138,20 @@ export const defaultFilterMethods = {
         ? new Date(fieldValue) >= new Date(matchValue)
         : true;
     }
+  },
+  booleanIsTrue: {
+    dataType: "boolean",
+    displayText: "Is true",
+    filter(fieldValue, matchValue) {
+      return !!fieldValue === true;
+    }
+  },
+  booleanIsFalse: {
+    dataType: "boolean",
+    displayText: "Is false",
+    filter(fieldValue, matchValue) {
+      return !!fieldValue === false;
+    }
   }
 };
 
