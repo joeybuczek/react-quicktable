@@ -149,7 +149,7 @@ const ColumnDocs = props => {
           sortable, you must also provide a <b>dataType</b> prop to designate the
           type of sorting algorithm to be used by <b>QuickTable</b>. The{" "}
           <b>dataType</b> prop takes a string of one of the following values:
-          "string", "number", or "date". When combined with filtering, the{" "}
+          "string", "number", "date", or "boolean". When combined with filtering, the{" "}
           <b>dataType</b> prop handles the type for both.
         </p>
         <pre>{c_code_4}</pre>
@@ -180,7 +180,7 @@ const ColumnDocs = props => {
           <b>Column</b> to be filterable, you must also provide a <b>dataType</b>{" "}
           prop to designate the type of filtering algorithm to be used by{" "}
           <b>QuickTable</b>. The <b>dataType</b> prop takes a string of one of the
-          following values: "string", "number", or "date". When combined with
+          following values: "string", "number", "date", or "boolean". When combined with
           sorting, the <b>dataType</b> prop handles the type for both.
         </p>
         <pre>{c_code_6}</pre>
