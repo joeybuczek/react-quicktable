@@ -448,6 +448,9 @@ class QuickTable extends Component {
       removeRecord: record => {
         let options = this.recalcPagingOptions(record);
         this.recordApiRequest(removeRecord, record, options); // [IMPORTED_METHOD]
+      },
+      toggleRecord: record => {
+        this.toggleRequest(record);
       }
     };
   };
@@ -591,6 +594,7 @@ class QuickTable extends Component {
   handleFilterIndicatorClick = name => this.toggleFilterMenu(name);
   renderTHead = () => {
     let { columnData, toggleOptions } = this.state;
+    let { hideToggleColumn } = this.props;
     let toggleHeading = <th key="toggle-heading" style={{ width: 20 }} />;
     let headings = columnData.map((column, columnIndex) => {
       let {
@@ -677,7 +681,9 @@ class QuickTable extends Component {
 
     // If toggle options exist, place toggle column first
     return [
-      ...(toggleOptions.toggleContent.length > 0 ? [toggleHeading] : [])
+      ...((toggleOptions.toggleContent.length > 0 && !hideToggleColumn) 
+        ? [toggleHeading] 
+        : [])
     ].concat(headings);
   };
 
@@ -686,7 +692,7 @@ class QuickTable extends Component {
   renderTBody = () => {
     let { columnData, datasets, toggleOptions } = this.state;
     let { displayedData } = datasets;
-    let { rowStyle } = this.props;
+    let { rowStyle, hideToggleColumn } = this.props;
     let rows = [];
     displayedData.forEach((record, recordIndex) => {
       // Pre-check to see if toggle column should be enabled for row when shown
@@ -700,7 +706,7 @@ class QuickTable extends Component {
 
       let row = (
         <tr key={recordIndex}>
-          {toggleOptions.toggleContent.length > 0 && (
+          {toggleOptions.toggleContent.length > 0 && !hideToggleColumn && (
             <ToggleCell
               allowToggle={allowToggle}
               record={record}
@@ -743,6 +749,7 @@ class QuickTable extends Component {
             <ToggleRow
               key={`toggleRow-${toggleIndex}${recordIndex}`}
               colSpan={columnData.length}
+              toggleColumnHidden={hideToggleColumn}
               style={style}
               className={className}
               record={record}
@@ -951,6 +958,9 @@ QuickTable.propTypes = {
 
   /** Enables/Disables ability to toggle more than one row at a time */
   multiToggle: PropTypes.bool,
+
+  /** Hides column with toggle icon, useful when toggling by recordApi method toggleRecord() */
+  hideToggleColumn: PropTypes.bool,
 
   /** Enables/Disables pagination for entire table */
   pageable: PropTypes.bool,

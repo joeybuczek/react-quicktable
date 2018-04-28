@@ -31,6 +31,23 @@ const ra_code_2 = `...
     <Column>
   </QuickTable>
 ...`;
+const ra_code_3 = `...
+  <QuickTable data={dataset} hideToggleColumn>
+    <Column name="Name" />
+    <Column name="Title />
+    <Column>
+      {(record, { toggleRecord }) => (
+        <button onClick={e => 
+          // Toggle the row & update the ViaToggle property:
+          toggleRecord({ ...record, ViaToggle: true });
+        }>Toggle Row</button>
+      )}
+    <Column>
+    <ToggleContent toggleFor{record => true}>
+      {record => <DetailView record={record} />}
+    </ToggleContent>
+  </QuickTable>
+...`;
 
 const RecordApiDocs = props => {
   return (
@@ -66,6 +83,11 @@ const RecordApiDocs = props => {
             <b>removeRecord</b>: <i>Function</i>; Removes the record from the
             loaded dataset
           </li>
+          <li>
+            <b>toggleRecord</b>: <i>Function</i>; Updates the record's toggled 
+            status for the current row, while also allowing other properties to
+            be updated like <b>updateRecord</b> does
+          </li>
         </ul>
         <p>
           It is important to note that these methods <i>will not</i> affect the
@@ -96,6 +118,18 @@ const RecordApiDocs = props => {
           to the value of the input box. The record is updated automatically
           within the dataset, and the table re-renders the appropriate row's data.
         </p>
+        <p>
+          The <b>toggleRecord</b> method can be used for collapsing and expanded 
+          the ToggleContent component for the given record's row. Simply pass the
+          record object into the method. In addition, this method can be used just
+          like <b>updateRecord</b> in that it will update any other property on the
+          record that needs to be updated at the same time the row is toggled.
+        </p>
+        <p>
+          Below is an example of using <b>toggleRecord</b> to toggle the row's content
+          via a button element (and hiding the toggle icon row via <b>hideToggleColumn</b> prop):
+        </p>
+        <pre>{ra_code_3}</pre>
         <br />
         <h4 className="h4_style">Removing Records</h4>
         <p>
