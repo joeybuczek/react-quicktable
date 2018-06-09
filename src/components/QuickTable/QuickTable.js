@@ -86,8 +86,11 @@ class QuickTable extends Component {
     this.setState({ ...this.generateStateFromProps() });
   }
   componentDidUpdate() {
+    let { ignoreResetOnNewData } = this.props;
     if (this.state.processNewDataset) {
-      this.setState({ ...this.generateStateFromProps() });
+      this.setState({
+        ...this.generateStateFromProps({ ignoreResetOnNewData })
+      });
     }
     // If props.onChange provided, send output data to it
     this.props.onChange && this.handleDatasetChange();
@@ -125,7 +128,7 @@ class QuickTable extends Component {
   //                 DATA PROCESSING METHODS
   // ==========================================================
   // Get initial state properties from props for mount and new incoming datasets
-  generateStateFromProps = () => {
+  generateStateFromProps = (updateOptions = {}) => {
     // Get data from props
     let originalData = this.getIncomingDataset();
     let loadedData = this.prepareLoadedDataset(originalData);
@@ -134,7 +137,7 @@ class QuickTable extends Component {
     // Get all user-defined options from props, pass in columnData for sorting defaults
     let incomingOptions = this.getIncomingOptions(columnData);
     // Get all options combined from user and initial state
-    let options = this.getAllOptions(incomingOptions);
+    let options = this.getAllOptions(incomingOptions, updateOptions);
     // Process the datasets using the loadedData and the "all" options object
     let processedDatasets = this.getProcessedDatasets(loadedData, options);
     // Update state to render the table
@@ -536,7 +539,7 @@ class QuickTable extends Component {
   };
 
   // Get all options from request/state
-  getAllOptions = request => {
+  getAllOptions = (request, updateOptions = {}) => {
     let {
       sortOptions,
       toggleOptions,
@@ -545,14 +548,24 @@ class QuickTable extends Component {
       pagingOptions,
       customFilters
     } = this.state;
+    let { ignoreResetOnNewData } = updateOptions;
     //toggleOptions.records = []; // Multiple records to toggle in the future?
     return {
-      sortOptions: { ...sortOptions, ...request.sortOptions },
+      sortOptions: {
+        ...sortOptions,
+        ...(!ignoreResetOnNewData ? request.sortOptions : {})
+      },
       toggleOptions: { ...toggleOptions, ...request.toggleOptions },
-      filterOptions: { ...filterOptions, ...request.filterOptions },
+      filterOptions: {
+        ...filterOptions,
+        ...(!ignoreResetOnNewData ? request.filterOptions : {})
+      },
       customFilters: request.customFilters || customFilters,
       limitOptions: { ...limitOptions, ...request.limitOptions },
-      pagingOptions: { ...pagingOptions, ...request.pagingOptions },
+      pagingOptions: {
+        ...pagingOptions,
+        ...(!ignoreResetOnNewData ? request.pagingOptions : {})
+      },
       recordApiOptions: { ...request.recordApiOptions }
     };
   };
@@ -961,6 +974,9 @@ QuickTable.propTypes = {
 
   /** Hides column with toggle icon, useful when toggling by recordApi method toggleRecord() */
   hideToggleColumn: PropTypes.bool,
+
+  /** Prevents the table from resetting when new data sets are loaded. Use with caution, as unintended paging options can result when loading data sets of varying lengths. */
+  ignoreResetOnNewData: PropTypes.bool,
 
   /** Enables/Disables pagination for entire table */
   pageable: PropTypes.bool,
